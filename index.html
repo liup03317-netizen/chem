@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="化学学习套件 - 高效有趣的化学学习工具" />
+  <title>⚛️ 元素纪元 - 沉浸式化学学习中心</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <!-- 动态背景 -->
+  <div class="particles" id="particles"></div>
+  <div class="glow-bg"></div>
+
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="logo">
+        <div class="logo-icon-wrapper">
+          <span class="logo-icon">⚛️</span>
+        </div>
+        <h1>元素<span class="accent">纪元</span></h1>
+      </div>
+      <p class="subtitle">沉浸式化学方程式学习控制台</p>
+    </header>
+
+    <main class="apps-grid">
+      <!-- 应用卡片 1：元素转化图 -->
+      <a href="transform.html" class="app-card">
+        <div class="app-card-glow glow-blue"></div>
+        <div class="app-card-inner">
+          <div class="app-icon-container">
+            <span class="app-icon">✨</span>
+          </div>
+          <div class="app-content">
+            <h2>元素转化图</h2>
+            <p>交互式化学反应网络地图，直观理解核心物质间的相互转化规律，一目了然。</p>
+          </div>
+          <div class="app-action">
+            <span>进入探索</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 应用卡片 2：闪卡记忆 -->
+      <a href="flashcards.html" class="app-card">
+        <div class="app-card-glow glow-purple"></div>
+        <div class="app-card-inner">
+          <div class="app-icon-container">
+            <span class="app-icon">📇</span>
+          </div>
+          <div class="app-content">
+            <h2>闪卡记忆</h2>
+            <p>基于艾宾浩斯遗忘曲线的智能复习系统，将短期反应记忆高效转化为永久掌握。</p>
+          </div>
+          <div class="app-action">
+            <span>开始复习</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 应用卡片 3：元素连连看 -->
+      <a href="match.html" class="app-card">
+        <div class="app-card-glow glow-green"></div>
+        <div class="app-card-inner">
+          <div class="app-icon-container">
+            <span class="app-icon">🧪</span>
+          </div>
+          <div class="app-content">
+            <h2>反应连连看</h2>
+            <p>匹配反应物与生成物卡片的趣味闯关游戏，在刺激的连击挑战中巩固方程式。</p>
+          </div>
+          <div class="app-action">
+            <span>启动实战</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </a>
+    </main>
+    
+    <footer class="dashboard-footer">
+      <div class="stats-panel glass-panel">
+        <div class="stat-item">
+          <div class="stat-icon">📅</div>
+          <div class="stat-info">
+            <span class="stat-label">今日待复习任务</span>
+            <span class="stat-value" id="dashboard-to-review">0 <small>个配平方案</small></span>
+          </div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-info">
+            <span class="stat-label">已永久掌握反应</span>
+            <span class="stat-value" id="dashboard-mastered">0 <small>个方程式</small></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/js/dashboard.js"></script>
+</body>
+</html>

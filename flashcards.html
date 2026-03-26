@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>化学元素复习闪卡 (Flashcards)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./css/style.css"> <!-- 复用基础变量与暗色 -->
+  <link rel="stylesheet" href="./css/flashcards.css">
+</head>
+<body>
+  <!-- 返回主页按钮 -->
+  <a href="/" title="返回大厅" style="position: fixed; top: 20px; left: 20px; z-index: 9999; font-size: 28px; text-decoration: none; border-radius: 50%; background: rgba(0,0,0,0.5); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease;">🏠</a>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <h1>化学<span class="accent">闪卡</span>记忆</h1>
+    </div>
+    <div class="actions">
+      <a href="transform.html" class="tab-btn">← 返回转化图</a>
+    </div>
+  </header>
+
+  <!-- Flashcard Main Area -->
+  <main class="flashcard-main">
+    
+    <!-- Header info indicating remaining cards -->
+    <div class="stats-bar">
+      <span>今日待复习: <strong id="cards-remaining">0</strong></span>
+    </div>
+
+    <!-- The 3D Flip Card Container -->
+    <div class="flashcard-container" id="flashcard-container">
+      <div class="flashcard" id="flashcard">
+        <!-- Front side of the card -->
+        <div class="card-face card-front">
+          <div class="card-hint">反应物与条件</div>
+          <div class="card-content" id="card-reactants">
+            <span class="placeholder">数据加载中...</span>
+          </div>
+          <div class="card-instruction">点击翻转查看答案</div>
+        </div>
+        
+        <!-- Back side of the card -->
+        <div class="card-face card-back">
+          <div class="card-hint">完整方程式</div>
+          <div class="card-content" id="card-equation">
+            <span class="placeholder">数据加载中...</span>
+          </div>
+          <div class="reaction-badge" id="card-type">未知反应</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating Controls (Hidden until card is flipped) -->
+    <div class="rating-controls" id="rating-controls">
+      <button class="rating-btn btn-forgot" data-grade="0">
+        <span class="grade-text">忘记</span>
+        <span class="grade-hint">&lt; 1 分钟</span>
+      </button>
+      <button class="rating-btn btn-hard" data-grade="3">
+        <span class="grade-text">困难</span>
+        <span class="grade-hint" id="hint-hard">1 天</span>
+      </button>
+      <button class="rating-btn btn-good" data-grade="4">
+        <span class="grade-text">掌握</span>
+        <span class="grade-hint" id="hint-good">3 天</span>
+      </button>
+      <button class="rating-btn btn-easy" data-grade="5">
+        <span class="grade-text">简单</span>
+        <span class="grade-hint" id="hint-easy">7 天</span>
+      </button>
+    </div>
+
+    <!-- Empty State / Done State -->
+    <div class="done-state hidden" id="done-state">
+      <div class="done-icon">🎉</div>
+      <h2>今日复习已完成！</h2>
+      <p>艾宾浩斯记忆曲线显示，坚持复习能将短期记忆转化为永久记忆哦！</p>
+      <button class="tab-btn done-back-btn" onclick="window.location.href='transform.html'">去探索更多反应</button>
+    </div>
+
+  </main>
+
+  <script type="module" src="./js/flashcard-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="化学元素转化图 - 交互式可视化工具" />
+  <title>🧪 化学元素转化图</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- 返回主页按钮 -->
+  <a href="/" title="返回大厅" style="position: fixed; top: 20px; left: 20px; z-index: 9999; font-size: 28px; text-decoration: none; border-radius: 50%; background: rgba(0,0,0,0.5); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: all 0.3s ease;">🏠</a>
+
+  <!-- 顶部导航栏 -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">✨</span>
+      <h1>元素<span class="accent">转化图</span></h1>
+    </div>
+    
+    <div class="element-tabs" id="element-tabs">
+      <button class="tab-btn active" data-element="C">
+        <span class="tab-icon">💎</span> C (碳)
+      </button>
+      <button class="tab-btn" data-element="H">
+        <span class="tab-icon">💧</span> H (氢)
+      </button>
+      <button class="tab-btn" data-element="O">
+        <span class="tab-icon">🌬️</span> O (氧)
+      </button>
+      <button class="tab-btn" data-element="Fe">
+        <span class="tab-icon">⚙️</span> Fe (铁)
+      </button>
+      <button class="tab-btn" data-element="Ca">
+        <span class="tab-icon">🦴</span> Ca (钙)
+      </button>
+    </div>
+  </header>
+
+  <!-- 左下角图例/说明 -->
+  <div class="legend" id="legend">
+    <h3>图例说明</h3>
+    <div class="legend-items">
+      <div class="legend-item"><span class="legend-color" style="background:var(--element-bg); border-color:var(--element-border);"></span> 单质</div>
+      <div class="legend-item"><span class="legend-color" style="background:var(--oxide-bg); border-color:var(--oxide-border);"></span> 氧化物</div>
+      <div class="legend-item"><span class="legend-color" style="background:var(--acid-bg); border-color:var(--acid-border);"></span> 酸</div>
+      <div class="legend-item"><span class="legend-color" style="background:var(--base-bg); border-color:var(--base-border);"></span> 碱</div>
+      <div class="legend-item"><span class="legend-color" style="background:var(--salt-bg); border-color:var(--salt-border);"></span> 盐</div>
+    </div>
+    <div class="legend-tips">
+      <p>👆 鼠标悬停节点：高亮物质关系</p>
+      <p>🖱️ 点击物质节点：查看相关反应列表</p>
+      <p>🔀 点击箭头连线：查看具体反应方程式</p>
+    </div>
+  </div>
+
+  <!-- 绘图主区域 -->
+  <main class="main-content">
+    <canvas id="graph-canvas"></canvas>
+  </main>
+
+  <!-- 详情面板（侧边栏） -->
+  <aside class="detail-panel" id="detail-panel">
+    <button class="close-btn" id="close-panel-btn">✕</button>
+    <div class="panel-content" id="panel-content">
+      <div class="placeholder-content">
+        <div class="placeholder-icon">👆</div>
+        <p>点击图表中的节点或连线查看详情</p>
+      </div>
+      <!-- 动态内容将注入在这里 -->
+    </div>
+  </aside>
+
+  <!-- 提示弹窗 (Toast) -->
+  <div id="toast" class="toast hidden">已加入复习计划</div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

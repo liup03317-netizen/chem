@@ -1,0 +1,285 @@
+/* ==========================================
+ * Flashcards UI - Claymorphism 
+ * ========================================== */
+
+.flashcard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stats Bar */
+.stats-bar {
+  position: absolute;
+  top: 40px;
+  background: var(--bg-secondary);
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow: var(--clay-shadow-outer), var(--clay-shadow-inner);
+  z-index: 10;
+}
+
+.stats-bar strong {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+/* Flashcard Container and 3D Setup */
+.flashcard-container {
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16 / 10;
+  perspective: 1000px; /* Enable 3D space */
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.flashcard-container.hidden {
+  display: none;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d; /* Children maintain 3D pos */
+}
+
+/* Flipped State */
+.flashcard.is-flipped {
+  transform: rotateX(180deg);
+}
+
+/* Front & Back Faces */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 30px;
+  background: var(--bg-secondary);
+  box-shadow: var(--clay-shadow-outer), var(--clay-shadow-inner);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.card-back {
+  transform: rotateX(180deg);
+  background: #eae4d3; /* Slightly different background for the back */
+}
+
+/* Card Content Styling */
+.card-hint {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card-content {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1.4;
+  width: 100%;
+}
+
+.card-content .condition {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.card-instruction {
+  position: absolute;
+  bottom: 24px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.reaction-badge {
+  position: absolute;
+  bottom: 24px;
+  padding: 8px 16px;
+  background: var(--success);
+  color: #fff;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  box-shadow: inset 2px 2px 4px rgba(255,255,255,0.4), var(--clay-shadow-outer);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Rating Controls */
+.rating-controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.rating-controls.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.rating-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 14px 24px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+  box-shadow: var(--clay-shadow-outer), var(--clay-shadow-inner);
+}
+
+.rating-btn:hover {
+  transform: translateY(-2px);
+}
+
+.rating-btn:active {
+  box-shadow: var(--clay-shadow-pressed);
+  transform: translateY(1px);
+}
+
+.grade-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.grade-hint {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.5);
+}
+
+/* Specific Rating Colors */
+.btn-forgot {
+  background: #ffb4a2;
+  color: #6a1a21;
+}
+
+.btn-hard {
+  background: #f5c46e;
+  color: #6b4d1b;
+}
+
+.btn-good {
+  background: #82d4ad;
+  color: #1b5e20;
+}
+
+.btn-easy {
+  background: #a2d2ff;
+  color: #0d47a1;
+}
+
+/* Done State */
+.done-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--bg-secondary);
+  padding: 60px;
+  border-radius: 30px;
+  box-shadow: var(--clay-shadow-outer), var(--clay-shadow-inner);
+}
+
+.done-state.hidden {
+  display: none;
+}
+
+.done-icon {
+  font-size: 5rem;
+  margin-bottom: 24px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.done-state h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 900;
+}
+
+.done-state p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.done-back-btn {
+  font-size: 1.1rem;
+  padding: 16px 32px;
+  background: var(--success);
+  color: #fff;
+  border-radius: 20px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flashcard-container {
+    aspect-ratio: 1; /* Square for mobile */
+    margin-top: 80px;
+  }
+  
+  .card-content {
+    font-size: 1.8rem;
+  }
+  
+  .rating-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .rating-btn {
+    min-width: calc(50% - 6px);
+    padding: 12px;
+  }
+}
